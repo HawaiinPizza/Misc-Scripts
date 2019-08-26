@@ -1,0 +1,22 @@
+function! ToggleSpell()
+  if !exists("g:showingSpell")
+    let g:showingSpell=0
+    nmap } ]sz=
+    nmap { [sz=
+  endif
+  if g:showingSpell==0
+    let g:showingSpell=1
+    set nospell
+    unmap }
+    unmap {
+  else
+    let g:showingSpell=0
+    set spell
+    nmap } ]sz=
+    nmap { [sz=
+  endif
+endfunction
+
+
+
+
