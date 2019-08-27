@@ -6,6 +6,4 @@ Current stuff:
 Spellchecker: Toggle with a keybinding, and you can cycle through spelling.
 
 ## Taskwarrior to Calcurse Sync
-One thing I hate about taskwarrior is the calendar. I made this script to export taskwarrior to calcurse. Issue is it takes 2.20 seconds to run, and require alot of exterinal programs:
-- csvkit: Program for maniplating csv
-- GNU version of sed: I haven't tested to see if this openbsd compatiable or not.
+One thing I hate about taskwarrior is the calendar. I made this script to export taskwarrior to calcurse. The problem is it requires a custom version of taskwarrior's export, which is provided.
