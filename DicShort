@@ -1,0 +1,58 @@
+# Home
+dc $HOME/Conf
+dd $HOME/Downloads
+dg $HOME/Games
+dm $HOME/Misc
+dM $HOME/Music
+dn $HOME/Notes
+dp $HOME/Projects
+ds $HOME/Scripts
+dh $HOME/Shool
+dw $HOME/Wallpaper
+da $HOME/Apoth/
+
+# Config
+dc. $HOME/.config/
+dcN $HOME/.config/neomutt/
+dcP $HOME/.config/pyradio
+dcR $HOME/.config/rofi
+dcc $HOME/.calcurse
+dcf $HOME/.config/feh
+dcg $HOME/.config/gzdoom
+dci $HOME/.config/i3
+dcm $HOME/.config/mpd
+dcn $HOME/.config/ncmpcpp
+dco $HOME/.config/openbox
+dcp $HOME/.config/polybar
+dcq $HOME/.config/qutebrowser
+dcr $HOME/.config/remind
+#dcr $HOME/.config/ranger
+#dct $HOME/.config/rtv
+dcv $HOME/.config/mpv
+dcy $HOME/.config/conky
+
+# Conf
+dcM $HOME/Conf/Mang/
+dcs $HOME/Conf/Suckless/
+
+## Suckless
+dcsd $HOME/Conf/Suckless/dwm
+dcsm $HOME/Conf/Suckless/dmenu
+dcss $HOME/Conf/Suckless/Sts
+
+# Shool
+dhd $HOME/Shool/DataSci
+dhp $HOME/Shool/Phil
+dhs $HOME/Shool/SoftEng
+dhl $HOME/Shool/Lin
+
+# Misc
+dmm $HOME/Misc/Mount/
+
+# Mang
+dcMs $HOME/Conf/Mang/Scripts/
+dcMt $HOME/Conf/Mang/Time/
+
+# Apotheiosios
+dam $HOME/Apoth/Math
+dac $HOME/Apoth/Comp

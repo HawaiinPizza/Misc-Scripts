@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+# Refresh the dwmbar.
+# Send SIGTRAP signal to dwmbar script, which will handle it with a trap.
+DWM=$(ps aux | grep "sh .*/dwmbar" | sed '/grep/d' | awk '{print $2}')
+kill -TRAP "$DWM"

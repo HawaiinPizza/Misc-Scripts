@@ -1,93 +1,14 @@
-# Setup the files
-clear
-/home/zaki/.calcurse/hooks/export-csv.pl > Temp.csv
-#rm  -f *csv
-#in2csv Temp.json > Data.csv
-#csvcut -c "'description','due'"  Data.csv > Temp.csv
-
-
-TMP=$(mktemp)
-cut -d, -f2-3 Temp.csv > $TMP
-cat $TMP
-cat $TMP > Temp.csv
-
+todoCal=/home/zaki/.calcurse/todo
+todo=/home/zaki/Notes/Todo.txt
 apts=/home/zaki/.calcurse/apts
-todo=/home/zaki/.calcurse/todo
+Date=/home/zaki/Notes/DueDates.otl
 
-sed -i '/completed/!d' Temp.csv
-sed -i '/deleted/!d' Temp.csv
-cat Temp.csv > App.csv
-cat Temp.csv > Task.csv
-
-## Sed
-#sed -i "s/'//g" Temp.csv
-#sed -i  's/^0.*//'  Temp.csv
-#sed -i  '/^$/d'  Temp.csv
-#sed -i 's/^\w*,//' Temp.csv
-#sed -i 's/\w\w+\w\w:00//' Temp.csv
-#sed -i 's/:,/,/' Temp.csv
-#cat Temp.csv > App.csv
-#cat Temp.csv > Task.csv
-#sed -i '/recurring/d' Temp.csv
-sed -i '/2019/!d' App.csv
-sed -i '/2019/d' Task.csv
-sed -i 's/^/,/' Task.csv
-#tail -n +2 "Task.csv" > Temp.csv
-#cat Temp.csv > Task.csv
-# Print shit to the files
-# Clear the file
-cat $apts > Backup
-touch Calc
-Calcurse=Calc
-grep '\[1\]' $apts > $Calcurse
-grep '@' $apts > $Calcurse
-> $apts
-
-IFS=','
-INPUT_FILE='App.csv'
-while read A B
-do
-	Date=$(echo $A | sed 's/T.*//')
-	Time=$(echo $A | sed 's/.*T//' | sed 's/Z//')
-	Hour=$(echo $Time | sed 's/\w\w\w\w$//' | sed "s/'//")
-	Hour=$(($Hour-4))
-
-	# Month Day Year
-	Year=$(echo $Date | cut -c 1-4)
-	Month=$(echo $Date | cut -c 5-6)
-	Day=$(echo $Date | cut -c 7-8)
+sed '/\[1\]/d' -i $apts
+cat $Date |   sed 's/ / \[1\] /' >> $apts
 
 
-	if [ $Hour -eq 0 ]
-	then
-		echo "$Month/$(($Day-1))/$Year [2] $B" >> $apts
-	else
-		echo "$Month/$Day/$Year @ $Hour:$Minute -> $Month/$Day/$Year @ $Hour:$Minute|$B" >> $apts
-	fi
-done  < $INPUT_FILE
 
-cat $Calcurse >> $apts
-tmp=$(mktemp)
-sort $apts | uniq > $tmp
-cat $tmp > $apts
->$Calcurse
-grep -v '\[0\]' $todo > $Calcurse
-> $todo
+> $todoCal
 
-tmp=$(mktemp)
-tail -n +2 "Task.csv"  > $tmp
-cat $tmp > "Task.csv"
-while IFS= read -r line; do
-	line=$(echo $line | sed 's/,//')
-	echo "[0] $line" >> $todo
-done < "Task.csv"
-
-sort $todo | uniq > $tmp
-cat $tmp > $todo
-cat $Calcurse >> $todo
-
-#rm *csv
-#rm $Calcurse
-#rm Backup
-#rm *json
+cat $todo | sed 's/(A)/\[1\]/'  |sed 's/(B)/\[2\]/'  |sed 's/(C)/\[3\]/'   > $todoCal
 

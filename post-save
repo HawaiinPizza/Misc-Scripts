@@ -1,0 +1,6 @@
+tmp=$(mktemp)
+Ctodo=~/.calcurse/todo
+Ntodo=~/Notes/Todo.txt
+cat $Ctodo >  $tmp
+
+cat $tmp | sed 's/\[1\]/(A)/'  |  sed 's/\[2\]/(B)/'  |sed 's/\[3\]/(C)/'   > $Ntodo
